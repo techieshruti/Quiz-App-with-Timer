@@ -43,17 +43,15 @@ btn.style.cursor="pointer";
 
 btn.addEventListener("mouseover", () =>
 {
-    btn.style.backgroundColor="#535c57ff"
-    btn.style.fontSize="1.5rem"
-    // btn.style.border="none"
-    btn.style.transition="0.1s ease-in"
-    btn.style.boxShadow="5px 5px 5px #849d84ff"
+    btn.style.backgroundColor="#8ce9b6ff"
+    btn.style.border="none"
+    btn.style.transition="0.2s ease-in"
+    btn.style.boxShadow="0px 0px 10px #b2d3f5ff"
 })
 
 btn.addEventListener("mouseout", () =>
 {
     btn.style.backgroundColor="#ffffff"
-    btn.style.fontSize="1.3rem"
-    btn.style.transition="0.1s ease-in"
+    btn.style.transition="0.5s ease-in"
     btn.style.boxShadow="none"
 })
