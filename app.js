@@ -1,5 +1,4 @@
-// start screen
-
+// container
 const container = document.createElement("div");
 document.body.appendChild(container);
 container.style.display="flex"
@@ -9,16 +8,36 @@ container.style.backgroundColor="#0f0c29";
 container.style.width="100%";
 container.style.height="550px";
 
-// heading h1
+// start screen div inside container
+const startScreen = document.createElement("div");
+container.appendChild(startScreen);
+startScreen.style.textAlign="center";
+startScreen.style.color="#b2d3f5ff";
+
+//heading inside startscreen div
 const heading1=document.createElement("h1");
-container.appendChild(heading1);
+startScreen.appendChild(heading1);
 heading1.textContent="🔥 Ultimate JS Quiz";
-heading1.style.color="#b2d3f5ff";
+heading1.style.paddingTop="2rem"
 
-// button
+// paragraph inside startscreen div
+const para = document.createElement("p");
+startScreen.appendChild(para);
+para.textContent=`Can you survive 60 seconds of JavaScript madness? \n
+Only legends score 100%!`;
+
+para.style.fontSize="2rem"
+para.style.paddingTop="2rem"
+para.style.paddingBottom="2rem"
+
+// button inside startscreen div
 const btn = document.createElement("button");
-container.appendChild(btn);
-btn.textContent="Start Button";
+startScreen.appendChild(btn);
+btn.textContent="Start the Challenge";
 
-btn.style.width="10rem"
-btn.style.height="3rem";
+btn.style.width="15rem"
+btn.style.height="3.5rem";
+btn.style.borderRadius="2rem"
+btn.style.fontSize="1.3rem";
+btn.style.cursor="pointer";
+
