@@ -55,3 +55,13 @@ btn.addEventListener("mouseout", () =>
     btn.style.transition="0.5s ease-in"
     btn.style.boxShadow="none"
 })
+
+// hide startscreen
+startScreen.id="startScreen";
+// startScreen.style.display="none"
+btn.addEventListener("click", () =>
+{
+    startScreen.style.display="none"
+})
+
+// QUIZ Screen
