@@ -262,3 +262,11 @@ question.options.forEach((optionText) => {
   });
   optionsBox.appendChild(btn);
 });
+
+// DISABLE ALL OPTIONS
+const allButtons=optionsBox.querySelectorAll("button");
+allButtons.forEach(btn => {
+    btn.disabled = true;
+    btn.style.cursor = "not-allowed";
+    btn.style.opacity = "0.6"; // Optional: show visually it's disabled
+  });
