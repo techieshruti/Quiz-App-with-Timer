@@ -72,6 +72,7 @@ const quizScreen = document.createElement("div");
 container.appendChild(quizScreen);
 
 // quiz screen styling
+quizScreen.style.display="flex";
 quizScreen.style.width="100%";
 quizScreen.style.height="550px";
 quizScreen.style.backgroundColor="pink";
@@ -80,7 +81,9 @@ quizScreen.style.backgroundColor="pink";
 const quizhead=document.createElement("div")
 quizScreen.appendChild(quizhead);
 
-quizhead.style.backgroundColor="yellow"
+quizhead.style.display="flex";
+quizhead.style.justifyContent="space-between";
+quizhead.style.backgroundColor="#e59696ff"
 quizhead.style.width="100%";
 quizhead.style.height="3rem"
 quizhead.style.margin="1rem"
@@ -102,5 +105,19 @@ preBtn.addEventListener("click", () => {
 })
 
 // timer in quizhead div
+const timer=document.createElement("div")
+quizhead.appendChild(timer);
 
+timer.style.justifyContent="space-between"
+
+const timerIcon=document.createElement("i")
+timer.appendChild(timerIcon);
+timerIcon.classList.add("fa-solid", "fa-hourglass-end");
+timerIcon.style.fontSize = "2rem";
+timerIcon.style.color = "#ffffff";
+timerIcon.style.marginTop="0.5rem"
+timerIcon.style.marginRight="0.5rem"
+
+const timerSpan=document.createElement("span")
+timer.appendChild(timerSpan);
 
