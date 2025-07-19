@@ -11,6 +11,8 @@ container.style.height="550px";
 // start screen div inside container
 const startScreen = document.createElement("div");
 container.appendChild(startScreen);
+
+startScreen.style.display="none";
 startScreen.style.textAlign="center";
 startScreen.style.color="#b2d3f5ff";
 
@@ -58,10 +60,47 @@ btn.addEventListener("mouseout", () =>
 
 // hide startscreen
 startScreen.id="startScreen";
-// startScreen.style.display="none"
+startScreen.style.display="none"
 btn.addEventListener("click", () =>
 {
     startScreen.style.display="none"
+    quizScreen.style.display = "flex";
 })
 
-// QUIZ Screen
+// QUIZ Screen inside div container
+const quizScreen = document.createElement("div");
+container.appendChild(quizScreen);
+
+// quiz screen styling
+quizScreen.style.width="100%";
+quizScreen.style.height="550px";
+quizScreen.style.backgroundColor="pink";
+
+// div for previous page button and timer
+const quizhead=document.createElement("div")
+quizScreen.appendChild(quizhead);
+
+quizhead.style.backgroundColor="yellow"
+quizhead.style.width="100%";
+quizhead.style.height="3rem"
+quizhead.style.margin="1rem"
+
+// prev btn in quizhead div
+const preBtn = document.createElement("i")
+quizhead.appendChild(preBtn);
+preBtn.classList.add("fa-solid", "fa-circle-chevron-left");
+
+preBtn.style.fontSize = "2rem";
+preBtn.style.color = "#ffffff";
+preBtn.style.cursor = "pointer";
+preBtn.style.paddingTop = "0.5rem";
+preBtn.style.paddingLeft = "0.5rem";
+
+preBtn.addEventListener("click", () => {
+    startScreen.style.display="block";
+    quizScreen.style.display = "none";
+})
+
+// timer in quizhead div
+
+
