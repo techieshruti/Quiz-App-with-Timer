@@ -186,17 +186,33 @@ preBtn.addEventListener("click", () => {
     startScreen.style.display = "block";
 });
 
-// CREATED QUESTION COUNT
-const questCount = document.createElement("h1")
-quizScreen.appendChild(questCount);
+// Question Data
+const question = {
+  text: "What is the output of typeof null?",
+  options: ["'null'", "'undefined'", "'object'", "'number'"],
+  correct: "'object'"
+};
+
+// CREATED QUIZ BOX
+const quizBox=document.createElement("div");
+quizScreen.appendChild(quizBox);
+quizBox.style.padding = "2rem";
+quizBox.style.color = "#000";
+quizBox.style.fontFamily = "Arial";
+
+// ADDED QUESTION COUNT TO QUIZ BOX
+const questionCounter = document.createElement("p")
+quizBox.appendChild(questionCounter);
 
 // QUESTION COUNT STYLING
-questCount.textContent="📋 Question 1 of 10";
-questCount.style.paddingLeft="2rem"
+questionCounter.textContent="📋 Question 1 of 10";
+questionCounter.style.paddingLeft="2rem"
+questionCounter.style.fontSize="1.5rem"
+questionCounter.style.color = "#333";
 
-// CREATED hORIZONTAL RULAR
+// ADDED hORIZONTAL RULAR TO QUIZ BOX
 const line = document.createElement("hr")
-quizScreen.appendChild(line)
+quizBox.appendChild(line)
 
 // STYLING TO hORIZONTAL LINE
 line.style.width="100%";
@@ -204,5 +220,45 @@ line.style.height="0.3rem";
 line.style.backgroundColor="#bab7b7ff";
 line.style.border="none"
 
-// CREATED QUESTION BANK
+// ADDED QUESTION TEXT TO QUIZ BOX
+const questionText = document.createElement("h1")
+quizBox.appendChild(questionText);
+questionText.textContent=question.text;
+questionText.style.marginTop = "3rem";
+questionText.style.marginBottom = "2rem";
+questionText.style.textAlign = "center";
 
+
+// CREATED OPTIONS BOX FOR EACh QUESTION
+const optionsBox=document.createElement("div")
+quizScreen.appendChild(optionsBox);
+
+optionsBox.style.display = "grid";
+optionsBox.style.gridTemplateColumns = "1fr 1fr";
+optionsBox.style.gap = "1.5rem";
+optionsBox.style.justifyContent = "center";
+optionsBox.style.maxWidth = "500px";
+optionsBox.style.margin = "0 auto";
+
+
+// Create option buttons
+question.options.forEach((optionText) => {
+    const btn =document.createElement("button");
+    btn.textContent=optionText;
+     btn.style.padding = "1rem";
+  btn.style.fontSize = "1rem";
+  btn.style.cursor = "pointer";
+  btn.style.borderRadius = "10px";
+  btn.style.border = "1px solid #ccc";
+  btn.style.backgroundColor = "#f4f4f4";
+
+  btn.addEventListener("click", () =>{
+    if(optionText === question.correct){
+        btn.style.backgroundColor = "#8ce9b6"; // green
+    }
+    else{
+        btn.style.backgroundColor = "#ffb3b3";
+    }
+  });
+  optionsBox.appendChild(btn);
+});
