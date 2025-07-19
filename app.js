@@ -1,3 +1,5 @@
+
+
 // CREATED CONTAINER
 const container = document.createElement("div");
 document.body.appendChild(container);
@@ -8,6 +10,8 @@ container.style.justifyContent="center"
 container.style.backgroundColor="#0f0c29";
 container.style.width="100%";
 container.style.height="550px";
+container.style.margin="0px";
+container.style.padding="0px";
 
 // ===========================================
 // ============== START SCREEN================
@@ -83,8 +87,9 @@ container.appendChild(quizScreen);
 
 // QUIZ SCREEN STYLING
 quizScreen.style.display="flex";
+quizScreen.style.flexDirection = "column";
 quizScreen.style.width="100%";
-quizScreen.style.height="550px";
+quizScreen.style.height="100%";
 quizScreen.style.backgroundColor="pink";
 
 // CREATED QUIZhEAD SECTION INSIDE QUIZ SCREEN
@@ -97,8 +102,8 @@ quizhead.style.justifyContent="space-between";
 quizhead.style.backgroundColor="#e59696ff"
 quizhead.style.width="100%";
 quizhead.style.height="3rem"
-quizhead.style.margin="1rem"
 quizhead.style.padding = "0 1rem";
+quizhead.style.boxSizing = "border-box";
 quizhead.style.alignItems = "center";
 
 // ADDED PREV BTN INSIDE QUIZ SCREEN hEAD
@@ -126,8 +131,6 @@ quizhead.appendChild(timer);
 timer.style.display = "flex";
 timer.style.alignItems = "center";
 timer.style.gap = "0.5rem";
-timer.style.paddingRight = "1rem";
-timer.style.justifyContent="space-between"
 
 // CREATED TIME-ICON INSIDE TIMER DIV
 const timerIcon=document.createElement("i")
@@ -147,6 +150,8 @@ timer.appendChild(timerSpan);
 timerSpan.style.color = "#ffffff";
 timerSpan.style.fontWeight = "bold";
 timerSpan.style.fontSize = "1.2rem";
+timerIcon.style.margin = "0";
+timerSpan.style.margin = "0";
 
 
 // TIME LOGIC
@@ -180,3 +185,24 @@ preBtn.addEventListener("click", () => {
     quizScreen.style.display = "none";
     startScreen.style.display = "block";
 });
+
+// CREATED QUESTION COUNT
+const questCount = document.createElement("h1")
+quizScreen.appendChild(questCount);
+
+// QUESTION COUNT STYLING
+questCount.textContent="📋 Question 1 of 10";
+questCount.style.paddingLeft="2rem"
+
+// CREATED hORIZONTAL RULAR
+const line = document.createElement("hr")
+quizScreen.appendChild(line)
+
+// STYLING TO hORIZONTAL LINE
+line.style.width="100%";
+line.style.height="0.3rem";
+line.style.backgroundColor="#bab7b7ff";
+line.style.border="none"
+
+// CREATED QUESTION BANK
+
