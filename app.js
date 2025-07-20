@@ -73,9 +73,28 @@ btn.addEventListener("mouseout", () =>
     btn.style.boxShadow="none"
 })
 
-// hIDE START SCREEN
-startScreen.id="startScreen";
-startScreen.style.display="none"
+btn.addEventListener("click", () => {
+    startScreen.style.display = "none";
+    quizScreen.style.display = "block";
+    timerSpan.style.paddingRight="2rem";
+
+    currentQuestionIndex = 0; // 🟢 Start from first question
+    renderQuestion();         // 🟢 Render the question here
+
+    // Start the countdown
+    timerInterval = setInterval(() => {
+        time--;
+        timerSpan.textContent = `Time: ${time}s`;
+
+        if (time === 0) {
+            clearInterval(timerInterval);
+            alert("⏰ Time's up!");
+        }
+    }, 1000);
+});
+
+
+
 
 // =========================================
 // =========== QUIZ SCREEN =================
@@ -186,7 +205,41 @@ preBtn.addEventListener("click", () => {
     startScreen.style.display = "block";
 });
 
-// Question Data
+// CREATED QUIZ BOX
+const quizBox=document.createElement("div");
+quizScreen.appendChild(quizBox);
+quizBox.style.padding = "2rem";
+quizBox.style.color = "#000";
+quizBox.style.fontFamily = "Arial";
+
+// ADDED QUESTION COUNT TO QUIZ BOX
+const questionCounter = document.createElement("p")
+quizBox.appendChild(questionCounter);
+
+// QUESTION COUNT STYLING
+questionCounter.textContent="📋 Question 1 of 10";
+questionCounter.style.paddingLeft="2rem"
+questionCounter.style.fontSize="1.5rem"
+questionCounter.style.color = "#333";
+
+// ADDED hORIZONTAL RULAR TO QUIZ BOX
+const line = document.createElement("hr")
+quizBox.appendChild(line)
+
+// STYLING TO hORIZONTAL LINE
+line.style.width="100%";
+line.style.height="0.3rem";
+line.style.backgroundColor="#bab7b7ff";
+line.style.border="none"
+
+// ADDED QUESTION TEXT TO QUIZ BOX
+const questionText = document.createElement("h1")
+quizBox.appendChild(questionText);
+questionText.style.marginTop = "3rem";
+questionText.style.marginBottom = "2rem";
+questionText.style.textAlign = "center";
+
+// QUESTIONS DATA
 const questions=[
     {
         question:"1. What does DOM stand for?",
@@ -285,42 +338,6 @@ const questions=[
   }
 ];
 
-// CREATED QUIZ BOX
-const quizBox=document.createElement("div");
-quizScreen.appendChild(quizBox);
-quizBox.style.padding = "2rem";
-quizBox.style.color = "#000";
-quizBox.style.fontFamily = "Arial";
-
-// ADDED QUESTION COUNT TO QUIZ BOX
-const questionCounter = document.createElement("p")
-quizBox.appendChild(questionCounter);
-
-// QUESTION COUNT STYLING
-questionCounter.textContent="📋 Question 1 of 10";
-questionCounter.style.paddingLeft="2rem"
-questionCounter.style.fontSize="1.5rem"
-questionCounter.style.color = "#333";
-
-// ADDED hORIZONTAL RULAR TO QUIZ BOX
-const line = document.createElement("hr")
-quizBox.appendChild(line)
-
-// STYLING TO hORIZONTAL LINE
-line.style.width="100%";
-line.style.height="0.3rem";
-line.style.backgroundColor="#bab7b7ff";
-line.style.border="none"
-
-// ADDED QUESTION TEXT TO QUIZ BOX
-const questionText = document.createElement("h1")
-quizBox.appendChild(questionText);
-questionText.textContent=question.text;
-questionText.style.marginTop = "3rem";
-questionText.style.marginBottom = "2rem";
-questionText.style.textAlign = "center";
-
-
 // CREATED OPTIONS BOX FOR EACh QUESTION
 const optionsBox=document.createElement("div")
 quizScreen.appendChild(optionsBox);
@@ -332,13 +349,43 @@ optionsBox.style.justifyContent = "center";
 optionsBox.style.maxWidth = "500px";
 optionsBox.style.margin = "0 auto";
 
+function renderQuestion() {
+  // Get current question
+  const question = questions[currentQuestionIndex];
 
-// Create option buttons
-question.options.forEach((optionText) => {
+  // Set question text
+  questionText.textContent = question.question;
+
+  // Update question counter
+  questionCounter.textContent = `📋 Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+  // Clear previous options
+  optionsBox.innerHTML = "";
+  questionText.textContent = "";
+
+  // Reset time & timer
+  clearInterval(timerInterval); // 🛑 Stop any existing timer
+  time = 60;                    // ⏳ Reset time
+  timerSpan.textContent = `Time: ${time}s`;
+
+  // Start new timer for this question
+  timerInterval = setInterval(() => {
+    time--;
+    timerSpan.textContent = `Time: ${time}s`;
+
+    if (time === 0) {
+      clearInterval(timerInterval); // ⛔ Stop timer
+      goToNextQuestion();           // ⏭ Auto next question
+    }
+  }, 1000);
+
+
+  // Create buttons dynamically
+  question.options.forEach(optionText => {
     const btn = document.createElement("button");
     btn.textContent = optionText;
-    
-    // Option styling
+
+    // Style the button
     btn.style.padding = "1rem";
     btn.style.fontSize = "1rem";
     btn.style.cursor = "pointer";
@@ -346,33 +393,45 @@ question.options.forEach((optionText) => {
     btn.style.border = "1px solid #ccc";
     btn.style.backgroundColor = "#f4f4f4";
 
-    // Add to DOM
-    optionsBox.appendChild(btn);
-
-    // On option click
+    // Add click logic
     btn.addEventListener("click", () => {
-        if (optionText === question.correct) {
-            btn.style.backgroundColor = "#8ce9b6"; // green for correct
-        } else {
-            btn.style.backgroundColor = "#ffb3b3"; // red for wrong
-        }
-
-        // 🔐 Disable all option buttons
-        const allButtons = optionsBox.querySelectorAll("button");
-        allButtons.forEach(button => {
-      button.disabled = true;
-      button.style.cursor = "not-allowed";
-      if (button !== btn) {
-        button.style.opacity = "0.6";
+      // Check correct
+      if (optionText === question.correct) {
+        btn.style.backgroundColor = "#8ce9b6"; // green
+      } else {
+        btn.style.backgroundColor = "#ffb3b3"; // red
       }
-        });
-        // Highlight the selected button
-    btn.style.opacity = "1";
-    btn.style.color = "#000"; // normal text
-    btn.style.fontWeight = "bold";
-    btn.style.border = "2px solid #000";
 
+      // Disable all buttons
+      const allButtons = optionsBox.querySelectorAll("button");
+      allButtons.forEach(button => {
+        button.disabled = true;
+        button.style.cursor = "not-allowed";
+        if (button !== btn) {
+          button.style.opacity = "0.6";
+        }
+      });
+
+      // Highlight selected
+      btn.style.opacity = "1";
+      btn.style.color = "#000";
+      btn.style.fontWeight = "bold";
+      btn.style.border = "2px solid #000";
+
+      // Move to next question after 1s
+      setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          renderQuestion();
+        } else {
+          alert("✅ Quiz Finished!");
+          // You can show score or result screen here
+        }
+      }, 1000);
     });
-    
-});
 
+    optionsBox.appendChild(btn);
+  });
+
+  
+}
