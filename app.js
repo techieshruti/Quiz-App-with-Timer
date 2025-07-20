@@ -20,9 +20,9 @@ container.style.padding="0px";
 // CREATED START SCREEN INSIDE CONTAINER
 const startScreen = document.createElement("div");
 container.appendChild(startScreen);
+startScreen.style.display = "block";
 
 // START SCREEN STYLING
-startScreen.style.display="none";
 startScreen.style.textAlign="center";
 startScreen.style.color="#b2d3f5ff";
 
@@ -77,20 +77,8 @@ btn.addEventListener("click", () => {
     startScreen.style.display = "none";
     quizScreen.style.display = "block";
     timerSpan.style.paddingRight="2rem";
-
-    currentQuestionIndex = 0; // 🟢 Start from first question
-    renderQuestion();         // 🟢 Render the question here
-
-    // Start the countdown
-    timerInterval = setInterval(() => {
-        time--;
-        timerSpan.textContent = `Time: ${time}s`;
-
-        if (time === 0) {
-            clearInterval(timerInterval);
-            alert("⏰ Time's up!");
-        }
-    }, 1000);
+    currentQuestionIndex = 0;
+  renderQuestion(); // ✅ Timer starts ONLY from here
 });
 
 
@@ -106,6 +94,7 @@ container.appendChild(quizScreen);
 
 // QUIZ SCREEN STYLING
 quizScreen.style.display="flex";
+quizScreen.style.display = "none";
 quizScreen.style.flexDirection = "column";
 quizScreen.style.width="100%";
 quizScreen.style.height="100%";
@@ -135,12 +124,6 @@ preBtn.style.fontSize = "2rem";
 preBtn.style.color = "#ffffff";
 preBtn.style.cursor = "pointer";
 preBtn.style.paddingLeft = "0.5rem";
-
-// ADDED EVENT ON PREV BTN
-preBtn.addEventListener("click", () => {
-    startScreen.style.display="block";
-    quizScreen.style.display = "none";
-})
 
 // CREATED TIMER DIV INSIDE QUIZhEAD
 const timer=document.createElement("div")
@@ -176,17 +159,6 @@ timerSpan.style.margin = "0";
 // TIME LOGIC
 let time = 60;
 let timerInterval;
-
-// ADDED EVENT ON PREV BTN
-btn.addEventListener("click", () => {
-    startScreen.style.display = "none";
-    quizScreen.style.display = "block";
-    timerSpan.style.paddingRight="2rem"
-
-    currentQuestionIndex = 0; // 🟢 Start from first question
-  renderQuestion();         // 🟢 Timer will start from here
-});
-
 
 // CLEAR TIMER IF USER GOES BACK
 preBtn.addEventListener("click", () => {
@@ -368,7 +340,13 @@ function renderQuestion() {
 
     if (time === 0) {
       clearInterval(timerInterval); // ⛔ Stop timer
-      goToNextQuestion();           // ⏭ Auto next question
+      // Automatically move to next question
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    renderQuestion();
+  } else {
+    alert("✅ Quiz Finished!");
+  }
     }
   }, 1000);
 
@@ -417,8 +395,9 @@ function renderQuestion() {
         if (currentQuestionIndex < questions.length) {
           renderQuestion();
         } else {
+            clearInterval(timerInterval);
           alert("✅ Quiz Finished!");
-          // You can show score or result screen here
+          
         }
       }, 1000);
     });
