@@ -183,18 +183,10 @@ btn.addEventListener("click", () => {
     quizScreen.style.display = "block";
     timerSpan.style.paddingRight="2rem"
 
-    // Start the countdown
-    timerInterval = setInterval(() => {
-        time--;
-        timerSpan.textContent = `Time: ${time}s`;
-
-        if (time === 0) {
-            clearInterval(timerInterval);
-            alert("⏰ Time's up!");
-            // You can call your end quiz logic here
-        }
-    }, 1000);
+    currentQuestionIndex = 0; // 🟢 Start from first question
+  renderQuestion();         // 🟢 Timer will start from here
 });
+
 
 // CLEAR TIMER IF USER GOES BACK
 preBtn.addEventListener("click", () => {
@@ -354,6 +346,7 @@ function renderQuestion() {
   const question = questions[currentQuestionIndex];
 
   // Set question text
+  questionText.textContent ="";
   questionText.textContent = question.question;
 
   // Update question counter
@@ -361,7 +354,7 @@ function renderQuestion() {
 
   // Clear previous options
   optionsBox.innerHTML = "";
-  questionText.textContent = "";
+//   questionText.textContent = "";
 
   // Reset time & timer
   clearInterval(timerInterval); // 🛑 Stop any existing timer
