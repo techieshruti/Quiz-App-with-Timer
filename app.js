@@ -187,11 +187,39 @@ preBtn.addEventListener("click", () => {
 });
 
 // Question Data
-const question = {
-  text: "What is the output of typeof null?",
-  options: ["'null'", "'undefined'", "'object'", "'number'"],
-  correct: "'object'"
-};
+const questions=[
+    {
+        question:"What does DOM stand for?",
+        options: ["Document Object Model","Data Object Model","Desktop Object Model", "Document Oriented Method"],
+        correct: "Document Object Model"
+    },
+    {
+        question: "Which keyword is used to declare a constant in JS?",
+        options: ["let", "const", "var","constant"],
+        correct: "const"
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        options: ["<scripting>", "<script>", "<js>","<javaScript>"],
+        correct: "<script>"
+    },
+    {
+        question: "What will be the output of the following code snippet? console.log(typeof(NaN));",
+        options: ["Object", "Number", "String", "None of above"],
+        correct: "Number"
+    },
+    {
+        question: "Which method converts JSON data to a JavaScript object?",
+        options:["JSON.parse()","JSON.stringify()", "JSON.toObject()","JSON.convert()"],
+        correct: "JSON.parse()"
+    },
+    {
+        question: "5. What will `2 + '2'` return?",
+        options: ["4", "'22'","NaN","undefined"],
+        correct: "'22'"
+    }
+    
+];
 
 // CREATED QUIZ BOX
 const quizBox=document.createElement("div");
@@ -243,30 +271,44 @@ optionsBox.style.margin = "0 auto";
 
 // Create option buttons
 question.options.forEach((optionText) => {
-    const btn =document.createElement("button");
-    btn.textContent=optionText;
-     btn.style.padding = "1rem";
-  btn.style.fontSize = "1rem";
-  btn.style.cursor = "pointer";
-  btn.style.borderRadius = "10px";
-  btn.style.border = "1px solid #ccc";
-  btn.style.backgroundColor = "#f4f4f4";
+    const btn = document.createElement("button");
+    btn.textContent = optionText;
+    
+    // Option styling
+    btn.style.padding = "1rem";
+    btn.style.fontSize = "1rem";
+    btn.style.cursor = "pointer";
+    btn.style.borderRadius = "10px";
+    btn.style.border = "1px solid #ccc";
+    btn.style.backgroundColor = "#f4f4f4";
 
-  btn.addEventListener("click", () =>{
-    if(optionText === question.correct){
-        btn.style.backgroundColor = "#8ce9b6"; // green
-    }
-    else{
-        btn.style.backgroundColor = "#ffb3b3";
-    }
-  });
-  optionsBox.appendChild(btn);
+    // Add to DOM
+    optionsBox.appendChild(btn);
+
+    // On option click
+    btn.addEventListener("click", () => {
+        if (optionText === question.correct) {
+            btn.style.backgroundColor = "#8ce9b6"; // green for correct
+        } else {
+            btn.style.backgroundColor = "#ffb3b3"; // red for wrong
+        }
+
+        // 🔐 Disable all option buttons
+        const allButtons = optionsBox.querySelectorAll("button");
+        allButtons.forEach(button => {
+      button.disabled = true;
+      button.style.cursor = "not-allowed";
+      if (button !== btn) {
+        button.style.opacity = "0.6";
+      }
+        });
+        // Highlight the selected button
+    btn.style.opacity = "1";
+    btn.style.color = "#000"; // normal text
+    btn.style.fontWeight = "bold";
+    btn.style.border = "2px solid #000";
+
+    });
+    
 });
 
-// DISABLE ALL OPTIONS
-const allButtons=optionsBox.querySelectorAll("button");
-allButtons.forEach(btn => {
-    btn.disabled = true;
-    btn.style.cursor = "not-allowed";
-    btn.style.opacity = "0.6"; // Optional: show visually it's disabled
-  });
