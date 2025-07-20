@@ -189,27 +189,22 @@ preBtn.addEventListener("click", () => {
 // Question Data
 const questions=[
     {
-        question:"What does DOM stand for?",
+        question:"1. What does DOM stand for?",
         options: ["Document Object Model","Data Object Model","Desktop Object Model", "Document Oriented Method"],
         correct: "Document Object Model"
     },
     {
-        question: "Which keyword is used to declare a constant in JS?",
+        question: "2. Which keyword is used to declare a constant in JS?",
         options: ["let", "const", "var","constant"],
         correct: "const"
     },
     {
-        question: "Inside which HTML element do we put the JavaScript?",
-        options: ["<scripting>", "<script>", "<js>","<javaScript>"],
-        correct: "<script>"
-    },
-    {
-        question: "What will be the output of the following code snippet? console.log(typeof(NaN));",
+        question: "3. What will be the output of the following code snippet? console.log(typeof(NaN));",
         options: ["Object", "Number", "String", "None of above"],
         correct: "Number"
     },
     {
-        question: "Which method converts JSON data to a JavaScript object?",
+        question: "4. Which method converts JSON data to a JavaScript object?",
         options:["JSON.parse()","JSON.stringify()", "JSON.toObject()","JSON.convert()"],
         correct: "JSON.parse()"
     },
@@ -217,8 +212,77 @@ const questions=[
         question: "5. What will `2 + '2'` return?",
         options: ["4", "'22'","NaN","undefined"],
         correct: "'22'"
-    }
-    
+    },
+    {
+        question:"6. What does `===` mean in JavaScript?",
+        options: ["Equals", "Strict equality", "Assignment","Comparison with type conversion"],
+        correct:"Strict equality"
+    },
+    {
+        question:"7. Which of these is a JavaScript data type?",
+        options:["float", "integer","symbol", "character"],
+        correct: "symbol"
+    },
+    {
+    question: "8. What is a closure in JavaScript?",
+    options: [
+      "A block of code",
+      "A function inside a loop",
+      "A function that remembers its lexical scope",
+      "A function with no return value"
+    ],
+    correct: "A function that remembers its lexical scope"
+  },
+  {
+    question: "9. Which method adds an element to the end of an array?",
+    options: ["push()", "pop()", "shift()", "unshift()"],
+    correct: "push()"
+  },
+  {
+    question: "10. What does `NaN` stand for?",
+    options: ["Not a Name", "Null and None", "Not a Number", "No assigned Number"],
+    correct: "Not a Number"
+  },
+  {
+    question: "11. What does the `addEventListener()` method do?",
+    options: [
+      "Adds style to HTML",
+      "Executes a function immediately",
+      "Attaches an event handler to an element",
+      "Creates an element"
+    ],
+    correct: "Attaches an event handler to an element"
+  },
+  {
+    question: "12. What is a promise in JavaScript?",
+    options: [
+      "A method to style elements",
+      "A function that returns true",
+      "An object representing future completion or failure of an async operation",
+      "A conditional loop"
+    ],
+    correct: "An object representing future completion or failure of an async operation"
+  },
+  {
+    question: "13. Which built-in method calls a function for each array element?",
+    options: ["map()", "forEach()", "filter()", "reduce()"],
+    correct: "forEach()"
+  },
+  {
+    question: "14. Which company developed JavaScript?",
+    options: ["Google", "Microsoft", "Netscape", "Apple"],
+    correct: "Netscape"
+  },
+  {
+    question: "15. How do you write a comment in JavaScript?",
+    options: [
+      "`# This is a comment`",
+      "`<!-- Comment -->`",
+      "`// This is a comment`",
+      "`/* This is a comment */`"
+    ],
+    correct: "// This is a comment"
+  }
 ];
 
 // CREATED QUIZ BOX
