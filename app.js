@@ -79,6 +79,7 @@ btn.addEventListener("mouseout", () =>
 })
 
 btn.addEventListener("click", () => {
+  playClickSound();
     startScreen.style.display = "none";
     quizScreen.style.display = "block";
     timerSpan.style.paddingRight="2rem";
@@ -103,7 +104,7 @@ quizScreen.style.display = "none";
 quizScreen.style.flexDirection = "column";
 quizScreen.style.width="100%";
 quizScreen.style.height="100%";
-quizScreen.style.backgroundColor="pink";
+quizScreen.style.background = "linear-gradient(135deg, #edece6ff, #ede379ff";
 
 // CREATED QUIZhEAD SECTION INSIDE QUIZ SCREEN
 const quizhead=document.createElement("div")
@@ -112,7 +113,7 @@ quizScreen.appendChild(quizhead);
 // STYLING QUIZhEAD
 quizhead.style.display="flex";
 quizhead.style.justifyContent="space-between";
-quizhead.style.backgroundColor="#1e1e2f"
+quizhead.style.backgroundColor="#27253cff"
 quizhead.style.width="100%";
 quizhead.style.height="3rem"
 quizhead.style.padding = "0 1rem";
@@ -168,6 +169,7 @@ let timerInterval;
 
 // CLEAR TIMER IF USER GOES BACK
 preBtn.addEventListener("click", () => {
+  playClickSound();
     clearInterval(timerInterval);
     time = 60;
     timerSpan.textContent = "Time: 60s";
@@ -372,15 +374,19 @@ function renderQuestion() {
 
     // Add click logic
     btn.addEventListener("click", () => {
+playClickSound();
+
       // Check correct
       if (optionText === question.correct) {
         btn.style.backgroundColor = "#8ce9b6"; // green
         btn.style.color = "#000";
         btn.style.boxShadow = "0 0 15px #8ce9b6"
+        playCorrectSound();
       } else {
         btn.style.backgroundColor = "#ff4d4d"; // red
         btn.style.color = "#000";
         btn.style.boxShadow = "0 0 15px #ff4d4d";
+        playWrongSound();
       }
 
       // Disable all buttons
@@ -417,3 +423,27 @@ function renderQuestion() {
 
   
 }
+
+// LOAD SOUNDS
+const correctSound = new Audio("sounds/correct.mp3");
+const wrongSound = new Audio("sounds/wrong.mp3");
+const clickSound = new Audio("sounds/click.mp3");
+
+// PLAY ON CORRECT ANSWER
+function playCorrectSound(){
+  correctSound.currentTime=0;
+  correctSound.play();
+}
+
+// PLAY ON WRONG ANSWER
+function playWrongSound(){
+  wrongSound.currentTime=0;
+  wrongSound.play();
+}
+
+// PLAY ON CLICK ANSWER
+function playClickSound(){
+  clickSound.currentTime=0;
+  clickSound.play();
+}
+
