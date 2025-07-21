@@ -22,8 +22,7 @@ container.style.padding="0";
 
 // CREATED START SCREEN INSIDE CONTAINER
 const startScreen = document.createElement("div");
-container.appendChild(startScreen);
-startScreen.style.display = "none";
+// container.appendChild(startScreen);
 
 // START SCREEN STYLING
 startScreen.style.textAlign="center";
@@ -407,13 +406,24 @@ playClickSound();
 
       // Move to next question after 1s
       setTimeout(() => {
-        currentQuestionIndex++;
+        const score= currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
           renderQuestion();
         } else {
             clearInterval(timerInterval);
-          alert("✅ Quiz Finished!");
-          
+          quizScreen.style.display="none"
+          scoreScreen.style.display="block"
+
+scoreText.textContent=`You scored ${score} out of ${questions.length} questions`
+
+if(score === questions.length){
+  scoreText.textContent="🔥 Legend! You aced it!"
+}else if (score >= questions.length/2){
+  scoreText.textContent="🎯 Great effort! Keep practicing!"
+}else {
+  scoreText.textContent="💡 Don’t give up! Try again!"
+}
+
         }
       }, 1000);
     });
@@ -454,6 +464,7 @@ function playClickSound(){
 const scoreScreen = document.createElement("div");
 container.appendChild(scoreScreen);
 scoreScreen.style.color = "#fff";
+// scoreScreen.style.display = "none";
 scoreScreen.style.textAlign = "center";
 scoreScreen.style.padding = "2rem";
 
@@ -475,4 +486,28 @@ const feedbackMsg= document.createElement("p")
 scoreScreen.appendChild(feedbackMsg)
 scoreText.style.fontSize = "1.8rem";
 scoreText.style.marginBottom = "1rem";
+
+// RESTART BUTTON
+const restartBtn=document.createElement("button")
+scoreScreen.appendChild(restartBtn);
+restartBtn.textContent="🔄 Restart Quiz"
+restartBtn.style.backgroundColor="8ce9b6"
+restartBtn.style.padding="0.8rem 2rem"
+restartBtn.style.fontSize="1.2rem"
+restartBtn.style.borderRadius="1.5rem"
+restartBtn.style.margin = "0.5rem";
+restartBtn.style.cursor = "pointer";
+restartBtn.style.border = "none";
+
+// HOME BUTTON
+const homeBtn=document.createElement("button")
+scoreScreen.appendChild(homeBtn);
+homeBtn.textContent="🏠 Back to Home"
+homeBtn.style.backgroundColor="8ce9b6"
+homeBtn.style.padding="0.8rem 2rem"
+homeBtn.style.fontSize="1.2rem"
+homeBtn.style.borderRadius="1.5rem"
+homeBtn.style.margin = "0.5rem";
+homeBtn.style.cursor = "pointer";
+homeBtn.style.border = "none";
 
