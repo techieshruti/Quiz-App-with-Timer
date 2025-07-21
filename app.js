@@ -22,7 +22,7 @@ container.style.padding="0";
 
 // CREATED START SCREEN INSIDE CONTAINER
 const startScreen = document.createElement("div");
-// container.appendChild(startScreen);
+//container.appendChild(startScreen);
 
 // START SCREEN STYLING
 startScreen.style.textAlign="center";
@@ -85,8 +85,6 @@ btn.addEventListener("click", () => {
     currentQuestionIndex = 0;
   renderQuestion(); // ✅ Timer starts ONLY from here
 });
-
-
 
 
 // =========================================
@@ -472,14 +470,14 @@ scoreScreen.style.padding = "2rem";
 const scoreHeading = document.createElement("h1");
 scoreHeading.textContent = "🎉 Quiz Completed!";
 scoreHeading.style.fontSize = "2.5rem";
-scoreHeading.style.marginBottom = "1.5rem";
+scoreHeading.style.marginBottom = "2.5rem";
 scoreScreen.appendChild(scoreHeading);
 
 // SCORE TEXT
 const scoreText = document.createElement("p")
 scoreScreen.appendChild(scoreText);
 scoreText.style.fontSize = "1.8rem";
-scoreText.style.marginBottom = "1rem";
+scoreText.style.marginBottom = "1.5rem";
 
 // FEEDBACK MESSAGE
 const feedbackMsg= document.createElement("p")
@@ -495,9 +493,10 @@ restartBtn.style.backgroundColor="8ce9b6"
 restartBtn.style.padding="0.8rem 2rem"
 restartBtn.style.fontSize="1.2rem"
 restartBtn.style.borderRadius="1.5rem"
-restartBtn.style.margin = "0.5rem";
+restartBtn.style.margin = "1rem";
 restartBtn.style.cursor = "pointer";
 restartBtn.style.border = "none";
+restartBtn.style.boxShadow = "0 0 15px #00e5ff";
 
 // HOME BUTTON
 const homeBtn=document.createElement("button")
@@ -506,11 +505,13 @@ homeBtn.textContent="🏠 Back to Home"
 homeBtn.style.backgroundColor="8ce9b6"
 homeBtn.style.padding="0.8rem 2rem"
 homeBtn.style.fontSize="1.2rem"
+homeBtn.style.boxShadow = "0 0 15px #00e5ff";
 homeBtn.style.borderRadius="1.5rem"
-homeBtn.style.margin = "0.5rem";
+homeBtn.style.margin = "1rem";
 homeBtn.style.cursor = "pointer";
 homeBtn.style.border = "none";
 
+// RESTART BUTTON EVENTS
 restartBtn.addEventListener("click", ()=> {
   playClickSound();
   scoreScreen.style.display="none";
@@ -522,6 +523,7 @@ restartBtn.addEventListener("click", ()=> {
   renderQuestion();
 });
 
+// hOME BUTTON EVENTS
 homeBtn.addEventListener("click", ()=>{
   playClickSound();
   scoreScreen.style.display="none";
