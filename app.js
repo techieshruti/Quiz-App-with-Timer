@@ -1,4 +1,6 @@
-
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+document.body.style.fontFamily = "Poppins, sans-serif";
 
 // CREATED CONTAINER
 const container = document.createElement("div");
@@ -7,11 +9,12 @@ document.body.appendChild(container);
 // CONTAINER STYLING
 container.style.display="flex"
 container.style.justifyContent="center"
-container.style.backgroundColor="#0f0c29";
+container.style.alignItems= "center"
+container.style.background = "linear-gradient(135deg, #0d0835ff, #4d4883ff, #bcbcd2ff)";
 container.style.width="100%";
-container.style.height="550px";
-container.style.margin="0px";
-container.style.padding="0px";
+container.style.height="100vh";
+container.style.margin="0";
+container.style.padding="0";
 
 // ===========================================
 // ============== START SCREEN================
@@ -24,7 +27,7 @@ startScreen.style.display = "block";
 
 // START SCREEN STYLING
 startScreen.style.textAlign="center";
-startScreen.style.color="#b2d3f5ff";
+startScreen.style.color="#f0f8ff";
 
 //CREATED hEADING INSIDE START SCREEN
 const heading1=document.createElement("h1");
@@ -32,7 +35,6 @@ startScreen.appendChild(heading1);
 
 // hEADING STYLING AND CONTENT
 heading1.textContent="🔥 Ultimate JS Quiz";
-heading1.style.paddingTop="2rem"
 
 // CREATED PARAGRAPh INSIDE START SCREEN
 const para = document.createElement("p");
