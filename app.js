@@ -22,7 +22,7 @@ container.style.padding="0";
 
 // CREATED START SCREEN INSIDE CONTAINER
 const startScreen = document.createElement("div");
-//container.appendChild(startScreen);
+container.appendChild(startScreen);
 
 // START SCREEN STYLING
 startScreen.style.textAlign="center";
@@ -83,6 +83,7 @@ btn.addEventListener("click", () => {
     quizScreen.style.display = "block";
     timerSpan.style.paddingRight="2rem";
     currentQuestionIndex = 0;
+    score = 0;
   renderQuestion(); // ✅ Timer starts ONLY from here
 });
 
@@ -375,6 +376,7 @@ playClickSound();
 
       // Check correct
       if (optionText === question.correct) {
+        score++;
         btn.style.backgroundColor = "#8ce9b6"; // green
         btn.style.color = "#000";
         btn.style.boxShadow = "0 0 15px #8ce9b6"
@@ -462,7 +464,7 @@ function playClickSound(){
 const scoreScreen = document.createElement("div");
 container.appendChild(scoreScreen);
 scoreScreen.style.color = "#fff";
-// scoreScreen.style.display = "none";
+scoreScreen.style.display = "none";
 scoreScreen.style.textAlign = "center";
 scoreScreen.style.padding = "2rem";
 
@@ -516,8 +518,7 @@ restartBtn.addEventListener("click", ()=> {
   playClickSound();
   scoreScreen.style.display="none";
   quizScreen.style.display="none";
-  startScreen.style.display="block";
-  currentQuestionIndex = 0;
+  startScreen.style.display="block";currentQuestionIndex = 0;
   score = 0;
   startTimer(); // reset timer
   renderQuestion();
@@ -527,6 +528,5 @@ restartBtn.addEventListener("click", ()=> {
 homeBtn.addEventListener("click", ()=>{
   playClickSound();
   scoreScreen.style.display="none";
-  quizScreen.style.display="none";
-  startScreen.style.display="block";
+  quizScreen.style.display="none";startScreen.style.display="block";
 });
