@@ -23,7 +23,7 @@ container.style.padding="0";
 // CREATED START SCREEN INSIDE CONTAINER
 const startScreen = document.createElement("div");
 container.appendChild(startScreen);
-startScreen.style.display = "block";
+startScreen.style.display = "none";
 
 // START SCREEN STYLING
 startScreen.style.textAlign="center";
@@ -446,4 +446,33 @@ function playClickSound(){
   clickSound.currentTime=0;
   clickSound.play();
 }
+
+// =========================================
+// ===============SCORE SCREEN==============
+// =========================================
+
+const scoreScreen = document.createElement("div");
+container.appendChild(scoreScreen);
+scoreScreen.style.color = "#fff";
+scoreScreen.style.textAlign = "center";
+scoreScreen.style.padding = "2rem";
+
+// SCORE HEADING
+const scoreHeading = document.createElement("h1");
+scoreHeading.textContent = "🎉 Quiz Completed!";
+scoreHeading.style.fontSize = "2.5rem";
+scoreHeading.style.marginBottom = "1.5rem";
+scoreScreen.appendChild(scoreHeading);
+
+// SCORE TEXT
+const scoreText = document.createElement("p")
+scoreScreen.appendChild(scoreText);
+scoreText.style.fontSize = "1.8rem";
+scoreText.style.marginBottom = "1rem";
+
+// FEEDBACK MESSAGE
+const feedbackMsg= document.createElement("p")
+scoreScreen.appendChild(feedbackMsg)
+scoreText.style.fontSize = "1.8rem";
+scoreText.style.marginBottom = "1rem";
 
