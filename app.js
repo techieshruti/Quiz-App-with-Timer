@@ -511,3 +511,20 @@ homeBtn.style.margin = "0.5rem";
 homeBtn.style.cursor = "pointer";
 homeBtn.style.border = "none";
 
+restartBtn.addEventListener("click", ()=> {
+  playClickSound();
+  scoreScreen.style.display="none";
+  quizScreen.style.display="none";
+  startScreen.style.display="block";
+  currentQuestionIndex = 0;
+  score = 0;
+  startTimer(); // reset timer
+  renderQuestion();
+});
+
+homeBtn.addEventListener("click", ()=>{
+  playClickSound();
+  scoreScreen.style.display="none";
+  quizScreen.style.display="none";
+  startScreen.style.display="block";
+});
