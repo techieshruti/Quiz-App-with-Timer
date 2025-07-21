@@ -83,7 +83,6 @@ btn.addEventListener("click", () => {
     quizScreen.style.display = "block";
     timerSpan.style.paddingRight="2rem";
     currentQuestionIndex = 0;
-    score = 0;
   renderQuestion(); // ✅ Timer starts ONLY from here
 });
 
@@ -208,6 +207,10 @@ quizBox.appendChild(questionText);
 questionText.style.marginTop = "3rem";
 questionText.style.marginBottom = "2rem";
 questionText.style.textAlign = "center";
+
+// Global Variables
+let currentQuestionIndex = 0;
+let score = 0;
 
 // QUESTIONS DATA
 const questions=[
@@ -406,7 +409,7 @@ playClickSound();
 
       // Move to next question after 1s
       setTimeout(() => {
-        const score= currentQuestionIndex++;
+      currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
           renderQuestion();
         } else {
@@ -417,11 +420,11 @@ playClickSound();
 scoreText.textContent=`You scored ${score} out of ${questions.length} questions`
 
 if(score === questions.length){
-  scoreText.textContent="🔥 Legend! You aced it!"
+  feedbackMsg.textContent="🔥 Legend! You aced it!"
 }else if (score >= questions.length/2){
-  scoreText.textContent="🎯 Great effort! Keep practicing!"
+  feedbackMsg.textContent="🎯 Great effort! Keep practicing!"
 }else {
-  scoreText.textContent="💡 Don’t give up! Try again!"
+  feedbackMsg.textContent="💡 Don’t give up! Try again!"
 }
 
         }
@@ -519,7 +522,6 @@ restartBtn.addEventListener("click", ()=> {
   scoreScreen.style.display="none";
   quizScreen.style.display="none";
   startScreen.style.display="block";currentQuestionIndex = 0;
-  score = 0;
   startTimer(); // reset timer
   renderQuestion();
 });
