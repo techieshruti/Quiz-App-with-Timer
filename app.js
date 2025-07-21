@@ -35,13 +35,14 @@ startScreen.appendChild(heading1);
 
 // hEADING STYLING AND CONTENT
 heading1.textContent="🔥 Ultimate JS Quiz";
+heading1.style.textShadow = "0 0 10px #8ce9b6";
 
 // CREATED PARAGRAPh INSIDE START SCREEN
 const para = document.createElement("p");
 startScreen.appendChild(para);
 
 // STYLING PARAGRAPh AND CONTENT
-para.textContent=`Can you survive 60 seconds of JavaScript madness? \n
+para.textContent=`Can you survive 60 seconds of JavaScript madness?
 Only legends score 100%!`;
 para.style.fontSize="2rem"
 para.style.paddingTop="2rem"
@@ -56,23 +57,25 @@ btn.textContent="Start the Challenge";
 btn.style.width="15rem"
 btn.style.height="3.5rem";
 btn.style.borderRadius="2.3rem"
+btn.style.border = "none";
+btn.style.boxShadow = "0 0 15px #00e5ff";
 btn.style.fontSize="1.3rem";
 btn.style.cursor="pointer";
+btn.style.transition = "all 0.3s ease";
 
 // ADDED EVENT TO BUTTON IN START SCREEN
 btn.addEventListener("mouseover", () =>
 {
-    btn.style.backgroundColor="#8ce9b6ff"
+    btn.style.backgroundColor="#8ce9b6"
     btn.style.border="none"
-    btn.style.transition="0.2s ease-in"
-    btn.style.boxShadow="0px 0px 10px #b2d3f5ff"
+    btn.style.boxShadow="0 0 15px #8ce9b6"
 })
 
 btn.addEventListener("mouseout", () =>
 {
-    btn.style.backgroundColor="#ffffff"
-    btn.style.transition="0.5s ease-in"
-    btn.style.boxShadow="none"
+    btn.style.backgroundColor="#ffffff";
+    btn.style.border = "none";
+    btn.style.boxShadow = "0 0 15px #00e5ff";
 })
 
 btn.addEventListener("click", () => {
@@ -109,12 +112,13 @@ quizScreen.appendChild(quizhead);
 // STYLING QUIZhEAD
 quizhead.style.display="flex";
 quizhead.style.justifyContent="space-between";
-quizhead.style.backgroundColor="#e59696ff"
+quizhead.style.backgroundColor="#1e1e2f"
 quizhead.style.width="100%";
 quizhead.style.height="3rem"
 quizhead.style.padding = "0 1rem";
 quizhead.style.boxSizing = "border-box";
 quizhead.style.alignItems = "center";
+quizhead.style.borderBottom = "2px solid #00e5ff";
 
 // ADDED PREV BTN INSIDE QUIZ SCREEN hEAD
 const preBtn = document.createElement("i")
@@ -363,7 +367,7 @@ function renderQuestion() {
     btn.style.fontSize = "1rem";
     btn.style.cursor = "pointer";
     btn.style.borderRadius = "10px";
-    btn.style.border = "1px solid #ccc";
+    btn.style.border = "none";
     btn.style.backgroundColor = "#f4f4f4";
 
     // Add click logic
@@ -371,8 +375,12 @@ function renderQuestion() {
       // Check correct
       if (optionText === question.correct) {
         btn.style.backgroundColor = "#8ce9b6"; // green
+        btn.style.color = "#000";
+        btn.style.boxShadow = "0 0 15px #8ce9b6"
       } else {
-        btn.style.backgroundColor = "#ffb3b3"; // red
+        btn.style.backgroundColor = "#ff4d4d"; // red
+        btn.style.color = "#000";
+        btn.style.boxShadow = "0 0 15px #ff4d4d";
       }
 
       // Disable all buttons
@@ -389,7 +397,7 @@ function renderQuestion() {
       btn.style.opacity = "1";
       btn.style.color = "#000";
       btn.style.fontWeight = "bold";
-      btn.style.border = "2px solid #000";
+      btn.style.border = "none";
 
       // Move to next question after 1s
       setTimeout(() => {
