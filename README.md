@@ -20,7 +20,7 @@ A fully dynamic and interactive quiz application built using **HTML** and **vani
 
 | Start Screen | Quiz Screen | Result Screen |
 |--------------|-------------|----------------|
-| ![Start](./screenshots/startscreen.png) | ![Quiz](./screenshots/quizscreen.png) | ![Result](./screenshots/scorescreen.png) |
+| ![Start](./screenshots/startscreen.PNG) | ![Quiz](./screenshots/quizscreen.PNG) | ![Result](./screenshots/scorescreen.PNG) |
 
 ---
 
