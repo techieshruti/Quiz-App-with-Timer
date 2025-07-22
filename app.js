@@ -339,6 +339,8 @@ optionsBox.style.gap = "1.5rem";
 optionsBox.style.justifyContent = "center";
 optionsBox.style.maxWidth = "500px";
 optionsBox.style.margin = "0 auto";
+optionsBox.style.margin = "0 auto";
+
 
 function renderQuestion() {
   let questionAnswered = false;
