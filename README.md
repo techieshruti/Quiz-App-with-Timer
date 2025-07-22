@@ -39,3 +39,16 @@ A fully dynamic and interactive quiz application built using **HTML**, **CSS**, 
 
 ## 📁 Folder Structure
 
+```
+quiz-app/
+│
+├── index.html
+├── style.css
+├── script.js
+│ ├── sounds/
+│ │ ├── click.mp3
+│ │ ├── correct.mp3
+│ │ └── wrong.mp3
+
+
+
