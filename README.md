@@ -18,12 +18,10 @@ A fully dynamic and interactive quiz application built using **HTML** and **vani
 
 ## 📸 Screenshots
 
-| Start Screen | Quiz Screen | 
+| Start Screen | Quiz Screen | Result Screen |
 |--------------|-------------|----------------|
-| ![Start](./screenshots/startscreen.PNG) | ![Quiz](./screenshots/quizscreen.PNG) |
-| Result Screen |
-|---------------|
-| ![Result](./screenshots/scorescreen.PNG) |
+| ![Start](./screenshots/startscreen.PNG) | ![Quiz](./screenshots/quizscreen.PNG) | ![Result](./screenshots/scorescreen.PNG) |
+
 ---
 
 ## 🛠️ Tech Stack
